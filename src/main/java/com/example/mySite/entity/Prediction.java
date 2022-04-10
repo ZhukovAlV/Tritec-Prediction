@@ -1,5 +1,10 @@
 package com.example.mySite.entity;
 
+public class Prediction {
+
+}
+
+/*
 import javax.persistence.*;
 
 @Entity
@@ -33,3 +38,4 @@ public class Prediction {
         this.name = name;
     }
 }
+*/

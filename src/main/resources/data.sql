@@ -1,3 +1,6 @@
+CREATE TABLE prediction(id INT AUTO_INCREMENT PRIMARY KEY,
+   name VARCHAR(255));
+
 INSERT INTO prediction(name) VALUES ('Да');
 INSERT INTO prediction(name) VALUES ('Нет');
 INSERT INTO prediction(name) VALUES ('Не знаю');

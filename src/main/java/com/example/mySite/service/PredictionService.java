@@ -10,10 +10,10 @@ import java.util.Optional;
 @Service
 public class PredictionService {
 
-    @Autowired
+/*    @Autowired
     private PredictionRepo predictionRepo;
 
     public Optional<Prediction> getPredictionById(Long id) {
         return predictionRepo.findById(id);
-    }
+    }*/
 }
