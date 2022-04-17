@@ -1,7 +1,7 @@
 package com.example.mySite.controller;
 
 import com.example.mySite.entity.Prediction;
-import com.example.mySite.service.PredictionService;
+import com.example.mySite.repository.PredictionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,41 +13,16 @@ import java.util.Random;
 @Controller
 public class MainController {
 
-    private final PredictionService predictionService;
 
     @Autowired
-    public MainController(PredictionService predictionService) {
-        this.predictionService = predictionService;
-    }
-
-   /* @GetMapping("/prediction")
-    public String greetMessage(Model model) {
-        String[] predictions = new String[]{
-                "Да",
-                "Нет",
-                "Не знаю",
-                "Скорее да",
-                "Скорее нет, чем да",
-                "Скорее да, чем нет",
-                "Вероятно",
-                "Вполне возможно",
-                "Затрудняюсь ответить",
-                "Даже и не думай",
-                "Мечтать не вредно"
-        };
-
-        Random random = new Random();
-        int num = random.nextInt(10);
-        model.addAttribute("message", predictions[num]);
-        return "prediction";
-    }*/
+    private PredictionRepo predictionRepo;
 
     @GetMapping("/prediction")
     public String greetMessage(Model model) {
         Random random = new Random();
         long num = random.nextInt(10) + 1;
 
-        Optional<Prediction> predictionOp = predictionService.getPredictionById(num);
+        Optional<Prediction> predictionOp = predictionRepo.findById(num);
         if (predictionOp.isPresent()) model.addAttribute("message", predictionOp.get().getName());
         else model.addAttribute("message", "Предсказание для Вас не нашлось");
 
